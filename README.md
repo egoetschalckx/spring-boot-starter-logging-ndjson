@@ -30,11 +30,3 @@ logging:
     # Optional (default is false)
     pretty-print: false
 ```
-
-# TODO
-1. LMAX Disruptor settings in `spring-logback.xml` for `log-ndjson`
-1. Unit Tests
-1. Performance Tests
-    1. Load Tests
-    1. Endurance Tests
-    1. Results Comparison

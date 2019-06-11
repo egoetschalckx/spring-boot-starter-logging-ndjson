@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <springProfile name="log-ndjson">
+
+        <springProperty
+                    name="pretty-print"
+                    source="logging.ndjson.pretty-print"
+                    defaultValue="false"
+            />
+
+        <appender
+                name="LOGSTASH_ASYNC_CONSOLE"
+                class="net.logstash.logback.appender.LoggingEventAsyncDisruptorAppender">
+
+            <appender name="LOGSTASH_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder class="com.goetschalckx.spring.log.ndjson.LogEncoder">
+                    <prettyPrint>${pretty-print}</prettyPrint>
+                </encoder>
+            </appender>
+
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="LOGSTASH_ASYNC_CONSOLE" />
+        </root>
+
+    </springProfile>
+
+    <springProfile name="default, log-dev">
+
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    </springProfile>
+
+</configuration>

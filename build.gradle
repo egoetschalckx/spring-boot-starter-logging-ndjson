@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'maven-publish'
+
+group = 'com.goetschalckx'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'net.logstash.logback:logstash-logback-encoder:5.2'
+    implementation 'ch.qos.logback:logback-classic:1.1.7'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter:1.4.0.RELEASE'
+    testImplementation 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId 'com.goetschalckx'
+            artifactId 'spring-boot-starter-logging-ndjson'
+            version '0.1'
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
