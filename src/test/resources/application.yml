@@ -1,0 +1,8 @@
+logging:
+  ndjson:
+    pretty-print: true
+
+spring:
+  profiles:
+    active:
+      log-ndjson
