@@ -8,16 +8,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import net.logstash.logback.composite.CompositeJsonFormatter;
 import net.logstash.logback.composite.ContextJsonProvider;
 import net.logstash.logback.composite.JsonProvider;
-import net.logstash.logback.composite.loggingevent.ArgumentsJsonProvider;
-import net.logstash.logback.composite.loggingevent.LogLevelJsonProvider;
-import net.logstash.logback.composite.loggingevent.LoggerNameJsonProvider;
-import net.logstash.logback.composite.loggingevent.LoggingEventFormattedTimestampJsonProvider;
-import net.logstash.logback.composite.loggingevent.LogstashMarkersJsonProvider;
-import net.logstash.logback.composite.loggingevent.MdcJsonProvider;
-import net.logstash.logback.composite.loggingevent.MessageJsonProvider;
-import net.logstash.logback.composite.loggingevent.StackTraceJsonProvider;
-import net.logstash.logback.composite.loggingevent.TagsJsonProvider;
-import net.logstash.logback.composite.loggingevent.ThreadNameJsonProvider;
+import net.logstash.logback.composite.loggingevent.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -68,6 +59,7 @@ public class LogEncoderTest {
         requiredProviders.add(ArgumentsJsonProvider.class);
         requiredProviders.add(LoggingEventFormattedTimestampJsonProvider.class);
         requiredProviders.add(TagsJsonProvider.class);
+        requiredProviders.add(StackHashJsonProvider.class);
 
         providers.forEach(x -> requiredProviders.remove(x.getClass()));
 

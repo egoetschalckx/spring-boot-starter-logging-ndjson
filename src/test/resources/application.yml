@@ -5,4 +5,5 @@ logging:
 spring:
   profiles:
     active:
-      log-ndjson
+      log-dev
+      #log-ndjson

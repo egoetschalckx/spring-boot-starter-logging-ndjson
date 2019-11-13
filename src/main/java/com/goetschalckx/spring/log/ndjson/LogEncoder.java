@@ -1,9 +1,5 @@
 package com.goetschalckx.spring.log.ndjson;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import ch.qos.logback.classic.pattern.ThrowableHandlingConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -19,20 +15,27 @@ import net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders;
 import net.logstash.logback.composite.loggingevent.LogstashMarkersJsonProvider;
 import net.logstash.logback.composite.loggingevent.MdcJsonProvider;
 import net.logstash.logback.composite.loggingevent.MessageJsonProvider;
+import net.logstash.logback.composite.loggingevent.StackHashJsonProvider;
 import net.logstash.logback.composite.loggingevent.StackTraceJsonProvider;
 import net.logstash.logback.composite.loggingevent.TagsJsonProvider;
 import net.logstash.logback.composite.loggingevent.ThreadNameJsonProvider;
 import net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder;
 import net.logstash.logback.stacktrace.ShortenedThrowableConverter;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class LogEncoder extends LoggingEventCompositeJsonEncoder {
 
     private static final String LOGGER_FIELD_NAME = "log";
-    private static final String LOG_LEVEL_FIELD_NAME = "severity";
+    private static final int LOGGER_NAME_LENGTH = 36;
+    private static final String LOG_LEVEL_FIELD_NAME = "lvl";
     private static final String STACK_TRACE_FIELD_NAME = "stack";
+    private static final String STACK_HASH_FIELD_NAME = "stack.hash";
     private static final String THREAD_FIELD_NAME = "thread";
-    private static final String MESSAGE_FIELD_NAME = "message";
-    private static final String TIMESTAMP_FIELD_NAME = "timestamp";
+    private static final String MESSAGE_FIELD_NAME = "msg";
+    private static final String TIMESTAMP_FIELD_NAME = "ts";
     private static final int MAX_DEPTH_PER_THROWABLE = 50;
 
     private static final List<String> THROWABLE_EXCLUDES =
@@ -84,8 +87,7 @@ public class LogEncoder extends LoggingEventCompositeJsonEncoder {
         jsonProviders.addLogstashMarkers(new LogstashMarkersJsonProvider());
         jsonProviders.addArguments(new ArgumentsJsonProvider());
         jsonProviders.addTags(new TagsJsonProvider());
-
-        // maybe also consider adding the Stack Hash and UUID providers
+        jsonProviders.addStackHash(stackHashJsonProvider());
 
         return jsonProviders;
     }
@@ -101,6 +103,7 @@ public class LogEncoder extends LoggingEventCompositeJsonEncoder {
     private static LoggerNameJsonProvider loggerNameJsonProvider() {
         final LoggerNameJsonProvider loggerNameJsonProvider = new LoggerNameJsonProvider();
         loggerNameJsonProvider.setFieldName(LOGGER_FIELD_NAME);
+        loggerNameJsonProvider.setShortenedLoggerNameLength(LOGGER_NAME_LENGTH);
         return loggerNameJsonProvider;
     }
 
@@ -136,6 +139,14 @@ public class LogEncoder extends LoggingEventCompositeJsonEncoder {
         throwableConverter.setExcludes(THROWABLE_EXCLUDES);
 
         return throwableConverter;
+    }
+
+    private static StackHashJsonProvider stackHashJsonProvider() {
+        StackHashJsonProvider provider = new StackHashJsonProvider();
+
+        provider.setFieldName(STACK_HASH_FIELD_NAME);
+
+        return provider;
     }
 
 }
