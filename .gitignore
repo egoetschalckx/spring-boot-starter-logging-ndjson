@@ -4,11 +4,6 @@ build
 bin
 out
 
-### Maven ###
-target/
-pom.xml.*
-dependency-reduced-pom.xml
-
 ### Intellij ###
 .idea/
 *.iml
@@ -18,12 +13,6 @@ dependency-reduced-pom.xml
 .vscode
 .history
 
-### Eclipse ###
-.settings
-.project
-.classpath
-.factorypath
-.sts4-cache
-
 ### Gradle ###
 .gradle
+gradle.properties

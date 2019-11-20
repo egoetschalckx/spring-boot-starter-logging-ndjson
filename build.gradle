@@ -1,6 +1,9 @@
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'maven-publish'
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'maven-publish'
+    id 'signing'
+}
 
 group = 'com.goetschalckx'
 
@@ -18,17 +21,84 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+task sourceJar(type: Jar) {
+    classifier "sources"
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier "javadoc"
+    from javadoc.destinationDir
+}
+
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            from components.java
+        maven(MavenPublication) {
+            pom {
+                name = 'Spring Boot Logging NDJSON'
+                description = 'Enables NDJSON logging in Spring Boot applications'
+                packaging = 'jar'
+                url = 'https://github.com/egoetschalckx/spring-boot-logging-ndjson'
+                /*licenses {
+                    license {
+                        name = 'Eclipse Public License - v 2.0'
+                        url = 'https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html'
+                    }
+                }*/
+                developers {
+                    developer {
+                        id = 'egoetschalckx'
+                        name = 'Eric Goetschalckx'
+                        email = 'eric@goetschalckx.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/egoetschalckx/spring-boot-logging-ndjson.git'
+                    developerConnection = 'scm:git:https://github.com/egoetschalckx/spring-boot-logging-ndjson.git'
+                    url = 'https://github.com/egoetschalckx/spring-boot-logging-ndjson'
+                }
+            }
 
             groupId 'com.goetschalckx'
             artifactId 'spring-boot-logging-ndjson'
             version '0.1'
+
+            from components.java
+            artifact sourceJar
+            artifact javadocJar
         }
     }
+
     repositories {
         mavenLocal()
+
+        /*maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
+            }
+        }*/
     }
+
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
+}
+
+/*tasks.withType(Sign) {
+    onlyIf {
+        project.hasProperty('signing.gnupg.keyName')
+    }
+}*/
+
+task signPom(type: Sign) {
+    println 'Signing POM...'
+
+    sign project.file('build/publications/maven/pom-default.xml')
+
+    // always recreate signature
+    outputs.upToDateWhen { false }
 }

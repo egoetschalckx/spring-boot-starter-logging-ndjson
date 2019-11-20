@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.log.ndjson;
+package com.goetschalckx.spring.boot.logging.ndjson;
 
 import ch.qos.logback.classic.pattern.ThrowableHandlingConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;

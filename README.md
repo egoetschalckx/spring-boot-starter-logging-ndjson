@@ -13,6 +13,7 @@ Having metadata in discrete JSON fields allows for advanced queries and visualiz
 
 Uses high-performance [LMAX Async Disruptor](https://github.com/LMAX-Exchange/disruptor) console appender.
 
+### Simple Sample Log Statement
 ```
 {
   "log" : "c.g.s.log.ndjson.TestApplication",
@@ -30,9 +31,12 @@ Uses high-performance [LMAX Async Disruptor](https://github.com/LMAX-Exchange/di
 }
 ```
 
-Top-level JSON fields can be added using the SLF4J MDC, Logstash Markers, and Logstash Arguments.
-
-The top-level field `tags` can be populated using SLF4J Markers.
+Top-level JSON fields can be added using:
+- [SLF4J MDC](http://www.slf4j.org/api/org/slf4j/MDC.html)
+- [Logstash Markers](https://github.com/logstash/logstash-logback-encoder/blob/master/src/main/java/net/logstash/logback/marker/Markers.java)
+- [Logstash Arguments](https://github.com/logstash/logstash-logback-encoder/tree/master/src/main/java/net/logstash/logback/argument)
+- [SLF4J Markers](https://github.com/qos-ch/slf4j/tree/master/slf4j-api/src/main/java/org/slf4j)
+  - This populates the top-level JSON field `tags` seen in the sample log statement above.
 
 ## Minimum Requirements
 Requires 
@@ -50,7 +54,7 @@ Use the following Spring profile(s) to enable the various logging output options
     - Supports custom JSON fields.
     - Intended for containerized deployments.
 
-##### Profiles Drawback
+### Profiles Drawback
 The problem with this approach is that if you already use a custom Spring Profile besides default, you will get no logs, which is less than ideal.
 
 ## Configuration
