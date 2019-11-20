@@ -85,20 +85,16 @@ publishing {
 
 signing {
     useGpgCmd()
+
     sign(publishing.publications)
 }
 
-/*tasks.withType(Sign) {
+tasks.withType(Sign) {
     onlyIf {
         project.hasProperty('signing.gnupg.keyName')
     }
-}*/
 
-task signPom(type: Sign) {
-    println 'Signing POM...'
-
-    sign project.file('build/publications/maven/pom-default.xml')
-
-    // always recreate signature
-    outputs.upToDateWhen { false }
+    doFirst {
+        println "Signing artifacts..."
+    }
 }
