@@ -14,7 +14,7 @@
                 class="net.logstash.logback.appender.LoggingEventAsyncDisruptorAppender">
 
             <appender name="LOGSTASH_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-                <encoder class="com.goetschalckx.spring.boot.logging.ndjson.LogEncoder">
+                <encoder class="io.github.goetschalckx.spring.boot.logging.ndjson.LogEncoder">
                     <prettyPrint>${pretty-print}</prettyPrint>
                 </encoder>
             </appender>
