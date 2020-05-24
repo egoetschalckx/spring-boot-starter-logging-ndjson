@@ -34,12 +34,12 @@ Uses high-performance [LMAX Async Disruptor](https://github.com/LMAX-Exchange/di
   "msg" : "log examples {logstash.argument=example}",
   "ts" : "2019-11-13T01:24:51.200+00:00",
   "HOSTNAME" : "dev",
-  "logstash.argument" : "example"
+  "logstash.argument" : "example",
   "logstash.marker" : {
     "json" : "example"
   },
   "tags" : [ "slf4j.marker" ],
-  "mdc" : "example",
+  "mdc" : "example"
 }
 ```
 
