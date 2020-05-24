@@ -1,4 +1,4 @@
-package com.goetschalckx.spring.boot.logging.ndjson;
+package io.github.goetschalckx.spring.boot.logging.json;
 
 import java.util.HashSet;
 import java.util.List;

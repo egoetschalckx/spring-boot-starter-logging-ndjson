@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
 
-    <springProfile name="log-ndjson">
+    <springProfile name="log-json">
 
         <springProperty
                     name="pretty-print"
-                    source="logging.ndjson.pretty-print"
+                    source="logging.json.pretty-print"
                     defaultValue="false"
             />
 
@@ -14,7 +14,7 @@
                 class="net.logstash.logback.appender.LoggingEventAsyncDisruptorAppender">
 
             <appender name="LOGSTASH_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-                <encoder class="io.github.goetschalckx.spring.boot.logging.ndjson.LogEncoder">
+                <encoder class="io.github.goetschalckx.spring.boot.logging.json.LogEncoder">
                     <prettyPrint>${pretty-print}</prettyPrint>
                 </encoder>
             </appender>
