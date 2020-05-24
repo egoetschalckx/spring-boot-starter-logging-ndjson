@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/goetschalckx/spring-boot-logging-json.svg?branch=master)](https://travis-ci.org/goetschalckx/spring-boot-logging-json)
 [![Code Coverage](https://img.shields.io/codecov/c/github/goetschalckx/spring-boot-logging-json/master.svg)](https://codecov.io/github/goetschalckx/spring-boot-logging-json?branch=master)
+[![codecov](https://codecov.io/gh/goetschalckx/spring-boot-logging-json/branch/master/graph/badge.svg)](https://codecov.io/gh/goetschalckx/spring-boot-logging-json)
+[![License](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json)](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json)
+[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)
 
 # spring-boot-logging-json
 by Eric Goetschalckx
