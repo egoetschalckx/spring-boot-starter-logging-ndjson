@@ -1,21 +1,9 @@
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        //classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-    }
-}
-
 plugins {
     id 'java'
     id 'jacoco'
     id 'maven-publish'
     id 'signing'
 }
-
-//apply plugin: 'com.bmuschko.nexus'
 
 group = 'io.github.goetschalckx'
 
@@ -119,20 +107,16 @@ tasks.withType(Sign) {
     }
 }
 
-/*gradle.taskGraph.whenReady { taskGraph ->
-    if (taskGraph.allTasks.any { it instanceof Sign }) {
-        println "Signing artifacts (old style)..."
+test {
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        xml.enabled true
+        xml.destination file("${buildDir}/reports/jacoco/report.xml")
+        csv.enabled true
+        html.enabled true
     }
-}*/
-
-/*extraArchive {
-    sources = true
-    tests = true
-    javadoc = true
-}*/
-
-/*nexus {
-    sign = true
-    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
-}*/
+}
