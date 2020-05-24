@@ -2,11 +2,12 @@ language: java
 dist: trusty
 jdk:
   - openjdk8
-  #- openjdk9
-  #- openjdk10
   - openjdk11
+env:
+  - CODACY_PROJECT_TOKEN=84700070b969407ebe5b365949ba221f
 script: ./gradlew check
 notifications:
   email: false
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh)
