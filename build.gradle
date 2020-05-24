@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+        //classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
     }
 }
 
@@ -15,7 +15,7 @@ plugins {
     id 'signing'
 }
 
-apply plugin: 'com.bmuschko.nexus'
+//apply plugin: 'com.bmuschko.nexus'
 
 group = 'io.github.goetschalckx'
 
@@ -49,16 +49,16 @@ publishing {
     publications {
         maven(MavenPublication) {
             pom {
-                name = 'Spring Boot Logging NDJSON'
-                description = 'Enables NDJSON logging in Spring Boot applications'
+                name = 'Spring Boot Logging JSON'
+                description = 'Enables JSON logging in Spring Boot applications'
                 packaging = 'jar'
                 url = 'https://github.com/goetschalckx/spring-boot-logging-json'
-                /*licenses {
+                licenses {
                     license {
-                        name = 'Eclipse Public License - v 2.0'
-                        url = 'https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html'
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
-                }*/
+                }
                 developers {
                     developer {
                         id = 'egoetschalckx'
@@ -78,8 +78,6 @@ publishing {
             from components.java
             artifact sourceJar
             artifact javadocJar2
-
-            println "Version " + version
         }
     }
 
@@ -95,7 +93,7 @@ publishing {
             //url = version.endsWith('SNAPSHOT') ? snapshotRepositoryUrl : repositoryUrl
             url = snapshotRepositoryUrl
 
-            println "Version " + version
+            println "Artifact Version: " + version
             println "Maven URL: " + url
 
             credentials {
@@ -108,16 +106,12 @@ publishing {
 }
 
 signing {
-    //println "useGpgCmd()..."
-    //useGpgCmd()
-
-    println "sign(publishing.publications)..."
     sign(publishing.publications)
 }
 
 tasks.withType(Sign) {
     onlyIf {
-        project.hasProperty('signing.keyId')
+        project.hasProperty('signing.keyId5')
     }
 
     doFirst {
@@ -125,20 +119,20 @@ tasks.withType(Sign) {
     }
 }
 
-gradle.taskGraph.whenReady { taskGraph ->
+/*gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.allTasks.any { it instanceof Sign }) {
         println "Signing artifacts (old style)..."
     }
-}
+}*/
 
-extraArchive {
+/*extraArchive {
     sources = true
     tests = true
     javadoc = true
-}
+}*/
 
-nexus {
+/*nexus {
     sign = true
     repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
     snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
-}
+}*/
