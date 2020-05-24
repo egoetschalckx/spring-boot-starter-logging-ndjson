@@ -4,7 +4,9 @@
 
 [![Coverage](https://codecov.io/gh/goetschalckx/spring-boot-logging-json/branch/master/graph/badge.svg)](https://codecov.io/gh/goetschalckx/spring-boot-logging-json)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/39ea34a49b254b03bf84d5d1adbec00a)](https://www.codacy.com/gh/goetschalckx/spring-boot-logging-json?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goetschalckx/spring-boot-logging-json&amp;utm_campaign=Badge_Grade)
+[![Codacy](https://img.shields.io/codacy/grade/39ea34a49b254b03bf84d5d1adbec00a?label=Codacy)](https://www.codacy.com/gh/goetschalckx/spring-boot-logging-json?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goetschalckx/spring-boot-logging-json&amp;utm_campaign=Badge_Grade)
+
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/goetschalckx/spring-boot-logging-json?label=CodeFactor)](https://www.codefactor.io/repository/github/goetschalckx/spring-boot-logging-json)
 
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)
 
