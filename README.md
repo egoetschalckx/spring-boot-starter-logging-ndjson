@@ -61,7 +61,7 @@ Requires
 Use the following Spring profile(s) to enable the various logging output options.
 
 - `default` or `log-dev`
-  - "Standard" Spring logging, colorized, pretty-printed, etc...
+  -   "Standard" Spring logging, colorized, pretty-printed, etc...
   - No support for custom fields.
 - `log-json`
   - json structured logs to the console.
