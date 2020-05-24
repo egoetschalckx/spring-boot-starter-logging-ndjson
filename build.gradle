@@ -99,8 +99,8 @@ publishing {
             println "Maven URL: " + url
 
             credentials {
-                username ossrhUser
-                password ossrhPassword
+                username project.hasProperty("ossrhUser") ? ossrhUser : ""
+                password project.hasProperty("ossrhPassword") ? ossrhPassword : ""
             }
         }
     }
