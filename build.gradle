@@ -21,7 +21,7 @@ group = 'io.github.goetschalckx'
 
 sourceCompatibility = 1.8
 
-version = '0.1.0-SNAPSHOT'
+version = '0.1.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -52,7 +52,7 @@ publishing {
                 name = 'Spring Boot Logging NDJSON'
                 description = 'Enables NDJSON logging in Spring Boot applications'
                 packaging = 'jar'
-                url = 'https://github.com/goetschalckx/spring-boot-logging-ndjson'
+                url = 'https://github.com/goetschalckx/spring-boot-logging-json'
                 /*licenses {
                     license {
                         name = 'Eclipse Public License - v 2.0'
@@ -67,14 +67,13 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-ndjson.git'
-                    developerConnection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-ndjson.git'
-                    url = 'https://github.com/goetschalckx/spring-boot-logging-ndjson'
+                    connection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-json.git'
+                    developerConnection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-json.git'
+                    url = 'https://github.com/goetschalckx/spring-boot-logging-json'
                 }
             }
 
-            //groupId 'io.github.goetschalckx'
-            artifactId 'spring-boot-logging-ndjson'
+            artifactId 'spring-boot-logging-json'
 
             from components.java
             artifact sourceJar
