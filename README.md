@@ -62,11 +62,11 @@ Use the following Spring profile(s) to enable the various logging output options
 
 - `default` or `log-dev`
   -   "Standard" Spring logging, colorized, pretty-printed, etc...
-  - No support for custom fields.
+  -   No support for custom fields.
 - `log-json`
-  - json structured logs to the console.
-  - Supports custom JSON fields.
-  - Intended for containerized deployments.
+  -   json structured logs to the console.
+  -   Supports custom JSON fields.
+  -   Intended for containerized deployments.
 
 ### Profiles Drawback
 The problem with this approach is that if you already use a custom Spring Profile besides default, you will get no logs, which is less than ideal.
