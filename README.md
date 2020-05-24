@@ -1,7 +1,9 @@
-# spring-boot-logging-ndjson
+[![Build Status](https://travis-ci.org/goetschalckx/spring-boot-logging-json.svg?branch=master)](https://travis-ci.org/goetschalckx/spring-boot-logging-json)
+
+# spring-boot-logging-json
 by Eric Goetschalckx
 
-[ndjson](https://github.com/ndjson/ndjson-spec) structured JSON log support for Spring Boot applications.
+[json](https://github.com/json/json-spec) structured JSON log support for Spring Boot applications.
 
 This capability works best in environments using log aggregation tools like [Stackdriver](https://cloud.google.com/stackdriver) or [ELK](https://www.elastic.co/what-is/elk-stack).
 
@@ -16,7 +18,7 @@ Uses high-performance [LMAX Async Disruptor](https://github.com/LMAX-Exchange/di
 ### Simple Sample Log Statement
 ```
 {
-  "log" : "c.g.s.log.ndjson.TestApplication",
+  "log" : "c.g.s.log.json.TestApplication",
   "lvl" : "INFO",
   "thread" : "main",
   "msg" : "log examples {logstash.argument=example}",
@@ -49,8 +51,8 @@ Use the following Spring profile(s) to enable the various logging output options
 - `default` or `log-dev`
     - "Standard" Spring logging, colorized, pretty-printed, etc...
     - No support for custom fields.
-- `log-ndjson`
-    - ndjson structured logs to the console.
+- `log-json`
+    - json structured logs to the console.
     - Supports custom JSON fields.
     - Intended for containerized deployments.
 
@@ -65,7 +67,7 @@ The following configuration properties are available for managing logging settin
 logging:
   
   # Newline-delimited JSON Logging Settings
-  ndjson:
+  json:
       
     # Enable JSON pretty-print
     # Optional (default is false)
