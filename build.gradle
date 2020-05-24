@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
+}
+
 plugins {
     id 'java'
     id 'jacoco'
@@ -5,9 +15,13 @@ plugins {
     id 'signing'
 }
 
+apply plugin: 'com.bmuschko.nexus'
+
 group = 'io.github.goetschalckx'
 
 sourceCompatibility = 1.8
+
+version = '0.1.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -26,7 +40,7 @@ task sourceJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+task javadocJar2(type: Jar, dependsOn: javadoc) {
     classifier "javadoc"
     from javadoc.destinationDir
 }
@@ -38,7 +52,7 @@ publishing {
                 name = 'Spring Boot Logging NDJSON'
                 description = 'Enables NDJSON logging in Spring Boot applications'
                 packaging = 'jar'
-                url = 'https://github.com/goetschalckx/spring-boot-logging-ndjson'
+                url = 'https://github.com/goetschalckx/spring-boot-logging-json'
                 /*licenses {
                     license {
                         name = 'Eclipse Public License - v 2.0'
@@ -53,48 +67,78 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-ndjson.git'
-                    developerConnection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-ndjson.git'
-                    url = 'https://github.com/goetschalckx/spring-boot-logging-ndjson'
+                    connection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-json.git'
+                    developerConnection = 'scm:git:https://github.com/goetschalckx/spring-boot-logging-json.git'
+                    url = 'https://github.com/goetschalckx/spring-boot-logging-json'
                 }
             }
 
-            groupId 'io.github.goetschalckx'
-            artifactId 'spring-boot-logging-ndjson'
-            version '0.1'
+            artifactId 'spring-boot-logging-json'
 
             from components.java
             artifact sourceJar
-            artifact javadocJar
+            artifact javadocJar2
+
+            println "Version " + version
         }
     }
 
     repositories {
         mavenLocal()
 
-        /*maven {
-            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+        maven {
+            //url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+
+            //def repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+            def snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+
+            //url = version.endsWith('SNAPSHOT') ? snapshotRepositoryUrl : repositoryUrl
+            url = snapshotRepositoryUrl
+
+            println "Version " + version
+            println "Maven URL: " + url
+
             credentials {
-                username sonatypeUsername
-                password sonatypePassword
+                username project.hasProperty("ossrhUser") ? ossrhUser : ""
+                password project.hasProperty("ossrhPassword") ? ossrhPassword : ""
             }
-        }*/
+        }
     }
 
 }
 
 signing {
-    useGpgCmd()
+    //println "useGpgCmd()..."
+    //useGpgCmd()
 
+    println "sign(publishing.publications)..."
     sign(publishing.publications)
 }
 
 tasks.withType(Sign) {
     onlyIf {
-        project.hasProperty('signing.gnupg.keyName')
+        project.hasProperty('signing.keyId')
     }
 
     doFirst {
         println "Signing artifacts..."
     }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.allTasks.any { it instanceof Sign }) {
+        println "Signing artifacts (old style)..."
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
 }
