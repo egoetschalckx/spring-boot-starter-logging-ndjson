@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/goetschalckx/spring-boot-logging-json.svg?branch=master)](https://travis-ci.org/goetschalckx/spring-boot-logging-json)
+[![Code Coverage](https://img.shields.io/codecov/c/github/goetschalckx/spring-boot-logging-json/master.svg)](https://codecov.io/github/goetschalckx/spring-boot-logging-json?branch=master)
 
 # spring-boot-logging-json
 by Eric Goetschalckx
