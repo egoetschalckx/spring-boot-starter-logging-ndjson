@@ -1,17 +1,13 @@
 [![Build Status](https://travis-ci.org/goetschalckx/spring-boot-logging-json.svg?branch=master)](https://travis-ci.org/goetschalckx/spring-boot-logging-json)
-
 [![License](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json?color=4DC71F)](https://github.com/goetschalckx/spring-boot-logging-json/blob/master/LICENSE)
 
 [![Coverage](https://codecov.io/gh/goetschalckx/spring-boot-logging-json/branch/master/graph/badge.svg)](https://codecov.io/gh/goetschalckx/spring-boot-logging-json)
+[![Codacy](https://app.codacy.com/project/badge/Grade/39ea34a49b254b03bf84d5d1adbec00a)](https://www.codacy.com/gh/goetschalckx/spring-boot-logging-json?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goetschalckx/spring-boot-logging-json&amp;utm_campaign=Badge_Grade)
+[![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/39ea34a49b254b03bf84d5d1adbec00a)](https://www.codacy.com/gh/goetschalckx/spring-boot-logging-json?utm_source=github.com&utm_medium=referral&utm_content=goetschalckx/spring-boot-logging-json&utm_campaign=Badge_Coverage)
+[![CodeFactor](https://www.codefactor.io/repository/github/goetschalckx/spring-boot-logging-json/badge)](https://www.codefactor.io/repository/github/goetschalckx/spring-boot-logging-json)
+[![Vulnerabilities](https://snyk.io/test/github/goetschalckx/spring-boot-logging-json/badge.svg)](https://snyk.io/test/github/goetschalckx/spring-boot-logging-json)
 
-[![Codacy](https://img.shields.io/codacy/grade/39ea34a49b254b03bf84d5d1adbec00a?label=Codacy)](https://www.codacy.com/gh/goetschalckx/spring-boot-logging-json?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goetschalckx/spring-boot-logging-json&amp;utm_campaign=Badge_Grade)
-
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/goetschalckx/spring-boot-logging-json?label=CodeFactor)](https://www.codefactor.io/repository/github/goetschalckx/spring-boot-logging-json)
-
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)
-
-[![Release](https://img.shields.io/nexus/r/io.github.goetschalckx/spring-boot-logging-json?color=4DC71F&label=release&server=https%3A%2F%2Foss.sonatype.org%2F)](https://oss.sonatype.org/#nexus-search;quick~spring-boot-logging-json)
-
+[![Release](https://img.shields.io/nexus/r/io.github.goetschalckx/spring-boot-logging-json?color=4DC71F&label=release&server=https%3A%2F%2Foss.sonatype.org%2F)](https://search.maven.org/artifact/io.github.goetschalckx/spring-boot-logging-json)
 [![Snapshot](https://img.shields.io/nexus/s/io.github.goetschalckx/spring-boot-logging-json?label=snapshot&server=https%3A%2F%2Foss.sonatype.org%2F)](https://oss.sonatype.org/#nexus-search;quick~spring-boot-logging-json)
 
 # spring-boot-logging-json
