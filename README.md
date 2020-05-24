@@ -1,8 +1,14 @@
 [![Build Status](https://travis-ci.org/goetschalckx/spring-boot-logging-json.svg?branch=master)](https://travis-ci.org/goetschalckx/spring-boot-logging-json)
-[![Code Coverage](https://img.shields.io/codecov/c/github/goetschalckx/spring-boot-logging-json/master.svg)](https://codecov.io/github/goetschalckx/spring-boot-logging-json?branch=master)
-[![codecov](https://codecov.io/gh/goetschalckx/spring-boot-logging-json/branch/master/graph/badge.svg)](https://codecov.io/gh/goetschalckx/spring-boot-logging-json)
+
+[![Coverage](https://codecov.io/gh/goetschalckx/spring-boot-logging-json/branch/master/graph/badge.svg)](https://codecov.io/gh/goetschalckx/spring-boot-logging-json)
+
 [![License](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json)](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json)
+
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)
+
+[![Release](https://img.shields.io/nexus/r/io.github.goetschalckx/spring-boot-logging-json?color=4DC71F&label=release&server=https%3A%2F%2Foss.sonatype.org%2F)](https://oss.sonatype.org/#nexus-search;quick~spring-boot-logging-json)
+
+[![Snapshot](https://img.shields.io/nexus/s/io.github.goetschalckx/spring-boot-logging-json?label=snapshot&server=https%3A%2F%2Foss.sonatype.org%2F)](https://oss.sonatype.org/#nexus-search;quick~spring-boot-logging-json)
 
 # spring-boot-logging-json
 by Eric Goetschalckx
@@ -47,7 +53,7 @@ Top-level JSON fields can be added using:
 ## Minimum Requirements
 Requires 
 - `spring-boot` v1.4.0.RELEASE+
-- `logstash-logback-encoder` v5.2+
+- `logstash-logback-encoder` v6.3+
 
 ## Spring Profiles
 Use the following Spring profile(s) to enable the various logging output options.
