@@ -1,9 +1,5 @@
 package io.github.goetschalckx.spring.boot.logging.json;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import net.logstash.logback.composite.CompositeJsonFormatter;
 import net.logstash.logback.composite.ContextJsonProvider;
@@ -11,7 +7,12 @@ import net.logstash.logback.composite.JsonProvider;
 import net.logstash.logback.composite.loggingevent.*;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class LogEncoderTest {
 
@@ -24,13 +25,21 @@ public class LogEncoderTest {
 
     @Test
     public void testStart() {
-        logEncoder.start();
+        try {
+            logEncoder.start();
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
     public void testStartWithPrettyPrint() {
-        logEncoder.setPrettyPrint(true);
-        logEncoder.start();
+        try {
+            logEncoder.setPrettyPrint(true);
+            logEncoder.start();
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test

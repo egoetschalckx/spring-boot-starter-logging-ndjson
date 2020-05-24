@@ -1,8 +1,10 @@
 [![Build Status](https://travis-ci.org/goetschalckx/spring-boot-logging-json.svg?branch=master)](https://travis-ci.org/goetschalckx/spring-boot-logging-json)
 
+[![License](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json?color=4DC71F)](https://github.com/goetschalckx/spring-boot-logging-json/blob/master/LICENSE)
+
 [![Coverage](https://codecov.io/gh/goetschalckx/spring-boot-logging-json/branch/master/graph/badge.svg)](https://codecov.io/gh/goetschalckx/spring-boot-logging-json)
 
-[![License](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json)](https://img.shields.io/github/license/goetschalckx/spring-boot-logging-json)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/39ea34a49b254b03bf84d5d1adbec00a)](https://www.codacy.com/gh/goetschalckx/spring-boot-logging-json?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goetschalckx/spring-boot-logging-json&amp;utm_campaign=Badge_Grade)
 
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)](https://img.shields.io/snyk/vulnerabilities/github/goetschalckx/spring-boot-logging-json)
 
@@ -25,8 +27,8 @@ Having metadata in discrete JSON fields allows for advanced queries and visualiz
 
 Uses high-performance [LMAX Async Disruptor](https://github.com/LMAX-Exchange/disruptor) console appender.
 
-### Simple Sample Log Statement
-```
+## Simple Sample Log Statement
+```json
 {
   "log" : "c.g.s.log.json.TestApplication",
   "lvl" : "INFO",
@@ -59,12 +61,12 @@ Requires
 Use the following Spring profile(s) to enable the various logging output options.
 
 - `default` or `log-dev`
-    - "Standard" Spring logging, colorized, pretty-printed, etc...
-    - No support for custom fields.
+  -   "Standard" Spring logging, colorized, pretty-printed, etc...
+  -   No support for custom fields.
 - `log-json`
-    - json structured logs to the console.
-    - Supports custom JSON fields.
-    - Intended for containerized deployments.
+  -   json structured logs to the console.
+  -   Supports custom JSON fields.
+  -   Intended for containerized deployments.
 
 ### Profiles Drawback
 The problem with this approach is that if you already use a custom Spring Profile besides default, you will get no logs, which is less than ideal.
